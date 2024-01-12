@@ -1,0 +1,19 @@
+query GetAllMovies {
+  movies {
+    id
+    name
+    year
+    watched
+    rating
+  }
+}
+
+query GetMovieByName($name: String!) {
+  movieByName(name: $name) {
+    id
+    name
+    year
+    watched
+    rating
+  }
+}

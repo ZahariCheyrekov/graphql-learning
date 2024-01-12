@@ -1,0 +1,28 @@
+query GetAllUsers {
+  users {
+    id
+    name
+    age
+    planet
+    friends {
+      name
+      age
+    }
+  }
+}
+
+query GetUser($userId: ID!) {
+  user(id: $userId) {
+    name
+    age
+    planet
+    friends {
+      name
+    }
+    favoriteMovies {
+      name
+      year
+      rating
+    }
+  }
+}
