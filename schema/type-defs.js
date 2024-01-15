@@ -26,6 +26,23 @@ const typeDefs = gql`
         movieByName(name: String!): Movie!
     }
 
+    input CreateUserInput {
+        name: Name!
+        age: Int!
+        planet: Planet = EARTH # Default value
+    }
+
+    input UpdateUserNameInput {
+        id: ID!
+        newName: String!
+    }
+
+    type Mutation {
+        createUser(input: CreateUserInput!): User
+        updateUserName(input: UpdateUserNameInput!): User
+        deleteUser(id: ID!): User
+    }
+
     enum Planet {
         EARTH
         MUSTAFAR
