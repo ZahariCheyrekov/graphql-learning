@@ -28,6 +28,33 @@ const resolvers = {
         favoriteMovies() {
             return lodash.filter(Movies, (movie) => movie.year >= 2008 && movie.year <= 2018);
         }
+    },
+    Mutation: {
+        createUser(_, args) {
+            const user = args.input;
+            const lastId = Users[Users.length - 1].id;
+            user.id = lastId + 1;
+            Users.push(user);
+            return user;
+        },
+        updateUserName(_, args) {
+            const { id, newName } = args.input;
+            let updatedUser;
+
+            Users.forEach((user) => {
+                if (user.id === Number(id)) {
+                    user.name = newName;
+                    updatedUser = user;
+                }
+            });
+
+            return updatedUser;
+        },
+        deleteUser(_, args) {
+            const { id } = args.id;
+            lodash.remove(Users, (user) => user.id === Number(id));
+            return null;
+        }
     }
 };
 
