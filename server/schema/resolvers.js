@@ -11,7 +11,11 @@ const resolvers = {
             return user;
         },
         users() {
-            return Users;
+            if (Users) {
+                return { users: Users };
+            }
+
+            return { message: "Users list does not exist" };
         },
 
         // Movie Resolvers
@@ -53,6 +57,19 @@ const resolvers = {
         deleteUser(_, args) {
             const { id } = args.id;
             lodash.remove(Users, (user) => user.id === Number(id));
+            return null;
+        }
+    },
+    UsersResult: {
+        __resolveType(obj) {
+            if (obj.users) {
+                return "Success";
+            }
+
+            if (obj.message) {
+                return "Error";
+            }
+
             return null;
         }
     }
