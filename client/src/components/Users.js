@@ -10,7 +10,6 @@ function Users() {
 
     const handleChange = (ev) => {
         setFormData({ ...formData, [ev.target.name]: ev.target.value.toUpperCase().trim() });
-        console.log(formData);
     }
 
     const handleCreateUser = (ev) => {

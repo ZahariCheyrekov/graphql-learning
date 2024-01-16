@@ -9,7 +9,6 @@ function Movies() {
 
     const handleMovieInput = (ev) => {
         setMovieName(ev.target.value);
-        console.log(ev.target.value);
     }
 
     return (
